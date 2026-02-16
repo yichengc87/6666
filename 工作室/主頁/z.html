@@ -1,0 +1,77 @@
+    <!DOCTYPE html>
+    <html lang="zh-Hant">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zynvrae 工作室</title>
+        <link rel="stylesheet" href="z.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.38.4/css-doodle.min.js"></script>
+    </head>
+    <body>
+        <!--背景-->
+        <css-doodle grid="20x20">
+            :doodle {
+                @size: 100vw 100vmin;
+                perspective: 10px;
+            }
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            top: @r(1%, 100%, 1.5);
+            left: @r(1%, 100%, 1.5);
+            background: hsl(@r(200, 255, 3), @r(70%, 90%), @r(70%, 90%));
+            animation: move 10s infinite @r(-10, 0)s @p(linear, ease-in, ease-in-out) alternate;
+            transform: rotate(@r(360deg)) translate(@r(-50, 50)vmin, @r(-50, 50)vmin);
+            zoom: @rn(.1, 5, 3);
+            box-shadow: 0 0 1px #fff, 0 0 3px #fff;
+            @keyframes move {
+                100% {
+                    transform: rotate(0) translate(0, 0);
+                }
+            }
+        </css-doodle>
+
+        <div class="content-wrapper">
+            <ul class="button-list">
+                <li><button onclick="location.href='../page1/page1.html'">首頁</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">服務內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">聯絡我們</button></li>
+                <li><button onclick="location.href='../page2/page2.html'">關於我們</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+                <li><button onclick="location.href='../page1/page1.html'">內容</button></li>
+
+            </ul>
+
+            <div class="html1">
+            <h1>Zynvrae<span class="span1">工作室</span></h1> 
+            </div>
+
+            <div class="html2">
+    <form id="myform" name="myform">
+        <p>電子信箱：<input type="email" name="email" required></p>
+        <p>Instagram：<input type="text" name="ig" required></p>
+        <p><input type="submit" value="送出"></p>
+    </form>
+</div>
+
+
+        </div>
+
+        <script type="module" src="z.js"></script>
+
+    </body>
+    </html>

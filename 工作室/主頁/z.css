@@ -1,0 +1,172 @@
+/*css reset*/
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+
+
+
+/* --- 整體與背景 --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh; /* 使用 vh 確保佔據滿版螢幕 */
+    overflow: hidden; 
+    background-color: #000;
+    font-family: sans-serif;
+}
+
+/* 確保背景層在最底下 */
+css-doodle {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* --- 前景容器 (重點修復區域) --- */
+.content-wrapper {
+    position: relative;
+    z-index: 1; /* 將內容浮在背景之上 */
+    display: flex;
+    flex-direction: column; /* 改為垂直排列 (由上到下) */
+    align-items: center;    /* 內容置中 */
+    padding-top: 50px;      /* 讓頂部留一點空間 */
+    height: 100%;
+    pointer-events: none;   /* 讓點擊事件穿透容器，以便點擊背景刷新 doodle */
+}
+
+/* 恢復按鈕與表單的點擊功能 (因為父層設定了穿透) */
+.button-list, .html1, .html2 {
+    pointer-events: auto; 
+}
+
+/* --- 列表 --- */
+.button-list {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    gap: 10px; 
+}
+
+.button-list li button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-list li button:hover {
+    background-color: #0056b3; 
+}
+
+/* --- 工作室大標 --- */
+.html1 {
+    background-color: aqua;
+    border: 10px solid blue; /* 原本的 30px 太粗容易破版，先調細一點，你可以再改回去 */
+    font-size: 20px;
+    text-align: center;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px; /* 加入最大寬度限制，手機版才不會壞掉 */
+    margin: 20px 0;   /* 調整上下間距 */
+    margin-right: 900px;
+}
+
+/* --- 功能區 --- */
+.html2 {
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.6); /* 加一點半透明黑底，讓文字在星空背景中更清楚 */
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 1200px;
+}
+/*Floating balls*/
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #4CB8B6;
+  overflow: hidden;
+}
+
+.ball {
+  position: absolute;
+  width: 20vmin;
+  height: 20vmin;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  animation: move linear infinite;
+}
+
+.ball:nth-child(odd) {
+    color: #006D5B;
+}
+
+.ball:nth-child(even) {
+    color: #FF6F61;
+}
+

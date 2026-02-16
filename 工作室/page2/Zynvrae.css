@@ -1,0 +1,96 @@
+/* ========= 棱銘｜Zynvrae 官方網站樣式表 ========= */
+
+/* 設定網頁基本樣式 */
+body {
+  background: linear-gradient(to right, #f9fafb, #e6ecf2); /* 背景使用柔和漸層，提升質感 */
+  font-family: 'Noto Sans TC', sans-serif; /* 使用適合中文閱讀的字體 */
+  margin: 0; /* 移除瀏覽器預設邊距 */
+  padding: 2rem; /* 頁面左右間距設為 2rem，避免內容貼邊 */
+  color: #1f2937; /* 使用深灰藍文字色，視覺沉穩 */
+  text-align: center; /* 所有文字置中對齊 */
+}
+
+/* 網站主標題樣式 */
+.title {
+  font-size: 2.5rem; /* 設定主標題大小 */
+  font-weight: 700; /* 粗體字增加辨識度 */
+  color: #111827; /* 使用略深色字強化主標題 */
+  margin-bottom: 0.5rem; /* 與副標題間保留間距 */
+}
+
+/* 網站副標題樣式 */
+.subtitle {
+  font-size: 1.25rem; /* 副標題略小於主標題 */
+  color: #374151; /* 使用灰藍色，讓層級更清楚 */
+  margin-bottom: 2rem; /* 與下方內容保留間距 */
+}
+
+/* 區塊標題樣式 */
+.section-title {
+  font-size: 1.5rem; /* 每區段標題大小 */
+  font-weight: 700; /* 加粗提升視覺層級 */
+  margin-top: 3rem; /* 與前方區塊留出間距 */
+  margin-bottom: 1rem; /* 與內文段落留出間距 */
+  color: #2563eb; /* 使用品牌主色（藍色）強化識別 */
+}
+
+/* 內文字內容樣式（共用） */
+.content {
+  font-size: 1.05rem; /* 文字略大於預設，更易閱讀 */
+  margin-bottom: 1.5rem; /* 區塊下方間距 */
+  line-height: 1.8; /* 行高設定提升可讀性 */
+  background-color: #ffffffa4; /* 半透明白背景，加強區塊辨識 */
+  padding: 1rem; /* 內距增加閱讀空間 */
+  border-radius: 0.5rem; /* 圓角柔化視覺 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04); /* 淡陰影增加立體感 */
+  animation: fadeIn 0.8s ease-out both; /* 套用淡入動畫提升質感 */
+  transition: transform 0.3s ease; /* 鼠標懸停動畫過渡 */
+}
+
+/* 滑鼠懸停時內容區塊上浮效果 */
+.content:hover {
+  transform: translateY(-2px); /* 向上移動 2px 增加互動感 */
+}
+
+/* 頁尾區塊樣式 */
+footer {
+  margin-top: 4rem; /* 與主要內容區隔開 */
+  padding-top: 2rem; /* 上內距 */
+  border-top: 1px solid #d1d5db; /* 加上淡灰分隔線 */
+  color: #6b7280; /* 淺灰文字色 */
+  font-size: 0.9rem; /* 字體稍微縮小 */
+}
+
+/* 頁尾版權文字樣式 */
+.footer-text {
+  margin-bottom: 0.5rem; /* 與連結區塊間距 */
+}
+
+/* 頁尾連結區塊容器 */
+.footer-links {
+  display: flex; /* 使用 flex 排版 */
+  justify-content: center; /* 水平置中 */
+  gap: 1.5rem; /* 連結間保留間距 */
+  flex-wrap: wrap; /* 寬度不足時自動換行 */
+}
+
+/* 每個頁尾連結樣式 */
+.link-item a {
+  color: #2563eb; /* 使用品牌藍色 */
+  text-decoration: none; /* 移除底線 */
+}
+.link-item a:hover {
+  text-decoration: underline; /* 滑鼠懸停時顯示底線 */
+}
+
+/* 動畫：進入時淡入淡出效果 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); } /* 起始為透明且往下 */
+  to { opacity: 1; transform: translateY(0); } /* 結束為正常顯示 */
+}
+
+/* 動畫：彈出用的縮放淡入效果 */
+@keyframes popup-fade {
+  from { opacity: 0; transform: scale(0.95); } /* 起始為縮小透明 */
+  to { opacity: 1; transform: scale(1); } /* 結束為正常大小透明度 */
+}

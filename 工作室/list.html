@@ -1,0 +1,66 @@
+<h2>收到的資料</h2>
+<button id="clearButton">清除資料</button>
+<ul id="list"></ul>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { getFirestore, collection, query, orderBy, onSnapshot, doc, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+// Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyBoNtm2jGaQWwBjNtvIhSN5jDTfHjE7UAE",
+  authDomain: "zynvrae-54c71.firebaseapp.com",
+  projectId: "zynvrae-54c71",
+  storageBucket: "zynvrae-54c71.firebasestorage.app",
+  messagingSenderId: "433437269146",
+  appId: "1:433437269146:web:720ac5c5c3c8c5d1001323",
+  measurementId: "G-8X4M6VMBDK"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const list = document.getElementById("list");
+const clearButton = document.getElementById("clearButton");
+
+// 即時監控 contacts
+const contactsCol = collection(db, "contacts");
+const q = query(contactsCol, orderBy("timestamp", "desc"));
+
+onSnapshot(q, (snapshot) => {
+    list.innerHTML = "";
+    snapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        const li = document.createElement("li");
+        li.textContent = `Email: ${data.email} | IG: ${data.ig}`;
+        list.appendChild(li);
+    });
+});
+
+// ---------- 清除全部資料功能 ----------
+clearButton.addEventListener("click", async () => {
+
+    const password = prompt("請輸入管理員密碼：");
+
+    if (password !== "990323") {
+        alert("密碼錯誤！");
+        return;
+    }
+
+    if (!confirm("確定要清除所有資料嗎？這個動作無法復原！")) return;
+
+    try {
+        const snapshot = await getDocs(contactsCol);
+        const deletePromises = snapshot.docs.map(docSnap =>
+            deleteDoc(doc(db, "contacts", docSnap.id))
+        );
+
+        await Promise.all(deletePromises);
+        alert("已清除所有資料！");
+    } catch (err) {
+        alert("清除失敗：" + err);
+    }
+});
+
+</script>
+
